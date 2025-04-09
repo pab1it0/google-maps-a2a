@@ -18,6 +18,11 @@ This project implements the [Agent2Agent (A2A) protocol](https://github.com/goog
 - **Capability Discovery**: Provides an agent card that describes available capabilities
 - **Security**: Basic API key authentication
 
+## Documentation
+
+- [Usage Guide](docs/USAGE.md) - Detailed instructions on how to use the API
+- [A2A Implementation Details](docs/A2A_IMPLEMENTATION.md) - Information about how this server implements the A2A protocol
+
 ## Prerequisites
 
 - Python 3.8+
@@ -129,65 +134,6 @@ Once the server is running, you can access the Swagger UI documentation at:
 ```
 http://localhost:8000/docs
 ```
-
-## Example Workflows
-
-### Geocoding
-
-1. Create a geocoding task:
-   ```json
-   {
-     "type": "geocode",
-     "input": {
-       "format": "text",
-       "content": "1600 Amphitheatre Parkway, Mountain View, CA"
-     }
-   }
-   ```
-
-2. Execute the task and receive coordinates:
-   ```json
-   {
-     "status": "completed",
-     "output": {
-       "format": "application/json",
-       "content": {
-         "results": [
-           {
-             "geometry": {
-               "location": {
-                 "lat": 37.4224764,
-                 "lng": -122.0842499
-               }
-             },
-             "formatted_address": "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA",
-             "place_id": "ChIJ2eUgeAK6j4ARbn5u_wAGqWA"
-           }
-         ],
-         "status": "OK"
-       }
-     }
-   }
-   ```
-
-### Directions
-
-1. Create a directions task:
-   ```json
-   {
-     "type": "directions",
-     "input": {
-       "format": "application/json",
-       "content": {
-         "origin": "San Francisco, CA",
-         "destination": "Mountain View, CA",
-         "mode": "driving"
-       }
-     }
-   }
-   ```
-
-2. Execute the task to get route information.
 
 ## Development
 
