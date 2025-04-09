@@ -2,6 +2,8 @@
 
 An open-source Agent2Agent (A2A) compliant server that provides Google Maps capabilities to other agents via a standardized protocol.
 
+This project implements the [Agent2Agent (A2A) protocol](https://github.com/google/A2A) created by Google, which enables different AI agents to communicate and collaborate with each other using a standardized interface.
+
 ## Features
 
 - **A2A Protocol Compliance**: Implements the Agent2Agent protocol for seamless agent-to-agent communication
@@ -28,7 +30,7 @@ An open-source Agent2Agent (A2A) compliant server that provides Google Maps capa
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/google-maps-a2a.git
+   git clone https://github.com/pab1it0/google-maps-a2a.git
    cd google-maps-a2a
    ```
 
@@ -42,8 +44,8 @@ An open-source Agent2Agent (A2A) compliant server that provides Google Maps capa
 3. Configure environment variables:
    ```bash
    # Create a .env file
-   echo "API_KEY=your_api_key_here" > .env
-   echo "GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here" >> .env
+   cp .env.example .env
+   # Edit .env with your keys
    ```
 
 4. Run the server:
@@ -110,6 +112,15 @@ To execute a task, send a PUT request to the `/tasks/{task_id}/execute` endpoint
 curl -X PUT http://localhost:8000/tasks/your-task-id-here/execute \
   -H "X-API-Key: your_api_key_here"
 ```
+
+## A2A Protocol Integration
+
+This server follows the [Agent2Agent (A2A) protocol](https://github.com/google/A2A) specification for agent communication:
+
+1. **Agent Card**: Provides a standardized descriptor of capabilities
+2. **Task-based Interaction**: Uses a task-oriented approach for handling requests
+3. **Standardized Formats**: Supports multiple input/output formats
+4. **Status Tracking**: Manages the full lifecycle of tasks
 
 ## API Documentation
 
@@ -178,6 +189,21 @@ http://localhost:8000/docs
 
 2. Execute the task to get route information.
 
+## Development
+
+### Running Tests
+
+The project includes a test suite to ensure functionality:
+
+```bash
+python -m pytest test_server.py -v
+```
+
+### Environment Variables
+
+- `API_KEY`: The API key for accessing the server
+- `GOOGLE_MAPS_API_KEY`: Your Google Maps API key
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -188,6 +214,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgements
 
+- [Google's Agent2Agent (A2A) Protocol](https://github.com/google/A2A) for the interoperability specification
 - Google Maps Platform for their mapping services
 - FastAPI for the web framework
-- The A2A protocol community
