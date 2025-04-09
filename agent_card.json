@@ -1,0 +1,58 @@
+{
+  "schema_version": "v1",
+  "name": "Google Maps A2A",
+  "description": "An A2A-compliant agent that provides Google Maps capabilities",
+  "version": "1.0.0",
+  "contact": "https://github.com/yourusername/google-maps-a2a",
+  "auth": {
+    "type": "api_key",
+    "header_name": "X-API-Key"
+  },
+  "input_formats": [
+    {"format": "text", "description": "Natural language query for maps operations"},
+    {"format": "application/json", "description": "Structured data for maps operations"}
+  ],
+  "output_formats": [
+    {"format": "text", "description": "Text response with maps information"},
+    {"format": "application/json", "description": "JSON response with structured maps data"},
+    {"format": "application/geo+json", "description": "GeoJSON formatted location data"}
+  ],
+  "tasks": [
+    {
+      "type": "geocode",
+      "description": "Convert addresses to latitude and longitude coordinates",
+      "input_formats": ["text", "application/json"],
+      "output_formats": ["application/json", "application/geo+json"]
+    },
+    {
+      "type": "reverse_geocode",
+      "description": "Convert coordinates to addresses",
+      "input_formats": ["application/json"],
+      "output_formats": ["application/json", "text"]
+    },
+    {
+      "type": "directions",
+      "description": "Get directions between locations",
+      "input_formats": ["application/json"],
+      "output_formats": ["application/json", "text"]
+    },
+    {
+      "type": "places_search",
+      "description": "Search for places using Google Places API",
+      "input_formats": ["text", "application/json"],
+      "output_formats": ["application/json", "application/geo+json"]
+    },
+    {
+      "type": "place_details",
+      "description": "Get detailed information about a specific place",
+      "input_formats": ["application/json"],
+      "output_formats": ["application/json"]
+    },
+    {
+      "type": "distance_matrix",
+      "description": "Calculate travel distance and time between points",
+      "input_formats": ["application/json"],
+      "output_formats": ["application/json"]
+    }
+  ]
+}
